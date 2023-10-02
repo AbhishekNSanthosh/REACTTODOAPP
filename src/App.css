@@ -5,7 +5,7 @@
 }
 
 *::-webkit-scrollbar {
-  width: 12px;
+  width: 7px;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -35,6 +35,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-image: url('./assets/bg.png');
+  z-index: -1;
 }
 
 .bgimg {
@@ -76,7 +77,8 @@
 
 .todoinput {
   width: 90%;
-  padding: 0.6rem;
+  padding: 0.5rem;
+  display: inline;
   outline: none;
   border: none;
   font-size: 17px;
@@ -91,13 +93,10 @@
 
 .todoDisplayBox {
   border-radius: 10px;
-  max-height: 70%;
-  min-height: 21%;
   display: flex;
   background-color: #fff;
   flex-direction: column;
-  overflow-x: hidden;
-  overflow-y: auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .info {
@@ -162,7 +161,7 @@ hr {
 }
 
 .createdList {
-  padding:2px 5px;
+  padding: 2px 5px;
   max-width: 25px;
   min-width: 15px;
   display: flex;
@@ -172,4 +171,10 @@ hr {
   margin-left: 3px;
   border-radius: 35%;
   background-color: #AE59FFCC;
+}
+
+.todoItemCol {
+  max-height: 20rem;
+  overflow-y: auto;
+  z-index: 15;
 }
