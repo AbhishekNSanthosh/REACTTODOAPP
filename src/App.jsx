@@ -1,7 +1,30 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './App.css';
 
 function App() { 
+
+const [todos,setTodos]=useState([])
+const [todo,setTodo] = useState('')
+
+function HandleChange(e){
+  setTodo(e.target.value);
+  console.log(todo);
+}
+
+//add a todo
+function addTodo(){
+  const newTodo = {
+    id: todos.length+1,
+    title: todo,
+    date : new Date().toLocaleString(),
+    isComplete: false
+  }
+  setTodos([...todos,newTodo]);
+  setTodo("")
+  console.log("hello ",todos)
+
+}
+
   return (
     <div className="App">
       <div className="container">
@@ -11,8 +34,8 @@ function App() {
           <span className="title">LoveTodo</span>
         </div>
         <div className="inputBox">
-          <input type="text" className='todoinput' placeholder='Add a new task' />
-          <span className="material-symbols-outlined send" >
+          <input type="text" className='todoinput' value={todo} placeholder='Add a new task' onChange={(e)=>(HandleChange(e))} />
+          <span onClick={addTodo} className="material-symbols-outlined send"  >
             send
           </span>
         </div>
@@ -29,7 +52,10 @@ function App() {
 
           <div className="todoItemCol">
 
-            <div className="todoItem">
+            {
+              todos && todos.map((task)=>(
+
+<div className="todoItem">
               <div className="todoItemWrapper">
                 <div className="checkbox">
                   <span class="material-symbols-outlined check">
@@ -37,111 +63,19 @@ function App() {
                   </span>
                 </div>
                 <div className="todoDetails">
-                  <span className="todoTitle">Morning Walk</span>
-                  <span className="todoTime">21:09pm</span>
+                  <span className="todoTitle">{task.title}</span>
+                  <span className="todoTime">{task.date}</span>
                 </div>
                 <div className="action">
-                  <span class="material-symbols-outlined check">
+                  <span className="material-symbols-outlined check">
                     delete
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="todoItem">
-              <div className="todoItemWrapper">
-                <div className="checkbox">
-                  <span class="material-symbols-outlined check">
-                    check_circle
-                  </span>
-                </div>
-                <div className="todoDetails">
-                  <span className="todoTitle">Morning Walk</span>
-                  <span className="todoTime">21:09pm</span>
-                </div>
-                <div className="action">
-                  <span class="material-symbols-outlined check">
-                    delete
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="todoItem">
-              <div className="todoItemWrapper">
-                <div className="checkbox">
-                  <span class="material-symbols-outlined check">
-                    check_circle
-                  </span>
-                </div>
-                <div className="todoDetails">
-                  <span className="todoTitle">Morning Walk</span>
-                  <span className="todoTime">21:09pm</span>
-                </div>
-                <div className="action">
-                  <span class="material-symbols-outlined check">
-                    delete
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="todoItem">
-              <div className="todoItemWrapper">
-                <div className="checkbox">
-                  <span class="material-symbols-outlined check">
-                    check_circle
-                  </span>
-                </div>
-                <div className="todoDetails">
-                  <span className="todoTitle">Morning Walk</span>
-                  <span className="todoTime">21:09pm</span>
-                </div>
-                <div className="action">
-                  <span class="material-symbols-outlined check">
-                    delete
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="todoItem">
-              <div className="todoItemWrapper">
-                <div className="checkbox">
-                  <span class="material-symbols-outlined check">
-                    check_circle
-                  </span>
-                </div>
-                <div className="todoDetails">
-                  <span className="todoTitle">Morning Walk</span>
-                  <span className="todoTime">21:09pm</span>
-                </div>
-                <div className="action">
-                  <span class="material-symbols-outlined check">
-                    delete
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="todoItem">
-              <div className="todoItemWrapper">
-                <div className="checkbox">
-                  <span class="material-symbols-outlined check">
-                    check_circle
-                  </span>
-                </div>
-                <div className="todoDetails">
-                  <span className="todoTitle">Morning Walk</span>
-                  <span className="todoTime">21:09pm</span>
-                </div>
-                <div className="action">
-                  <span class="material-symbols-outlined check">
-                    delete
-                  </span>
-                </div>
-              </div>
-            </div>
+              ))
+            }
 
             
 
