@@ -23,10 +23,10 @@ function App() {
   }
 
   //get todo count
-  const getTodoCount = () => {
-    let length = todos.length
-    return length
-  }
+  const countAllTodos = () => todos.length;
+
+  //get completed todo count 
+  const countCompletedTodos = () => todos.filter((todo) => todo.completed).length;
 
   return (
     <div className="App">
@@ -47,10 +47,10 @@ function App() {
             <>
               <div className="info">
                 <div className="infoWrapper">
-                  <span className="infoItem">Created Tasks: </span><div className="createdList">{getTodoCount()}</div>
+                  <span className="infoItem">Created Tasks: </span><div className="createdList">{countAllTodos()}</div>
                 </div>
                 <div className="infoWrapper">
-                  <span className="infoItem">Completed Tasks:</span><div className="createdList">1/1</div>
+                  <span className="infoItem">Completed Tasks:</span><div className="createdList">{countCompletedTodos()}/{countAllTodos()}</div>
                 </div>
               </div>
               <hr />
