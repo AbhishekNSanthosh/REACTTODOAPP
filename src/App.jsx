@@ -8,7 +8,6 @@ function App() {
 
   function HandleChange(e) {
     setTodo(e.target.value);
-    console.log(todo);
   }
 
   //add a todo
@@ -21,8 +20,12 @@ function App() {
     }
     setTodos([...todos, newTodo]);
     setTodo("")
-    console.log("hello ", todos)
+  }
 
+  //get todo count
+  const getTodoCount = () => {
+    let length = todos.length
+    return length
   }
 
   return (
@@ -44,7 +47,7 @@ function App() {
             <>
               <div className="info">
                 <div className="infoWrapper">
-                  <span className="infoItem">Created Tasks: </span><div className="createdList">1</div>
+                  <span className="infoItem">Created Tasks: </span><div className="createdList">{getTodoCount()}</div>
                 </div>
                 <div className="infoWrapper">
                   <span className="infoItem">Completed Tasks:</span><div className="createdList">1/1</div>
@@ -59,10 +62,10 @@ function App() {
             {
               todos && todos.map((task) => (
 
-                <div className="todoItem">
+                <div className="todoItem" key={task?.id}>
                   <div className="todoItemWrapper">
                     <div className="checkbox">
-                      <span class="material-symbols-outlined check">
+                      <span className="material-symbols-outlined check">
                         check_circle
                       </span>
                     </div>
