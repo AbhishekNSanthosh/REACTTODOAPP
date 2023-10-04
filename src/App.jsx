@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import nothingImage from './assets/nothing.png'
+import Aos from 'aos';
+import 'aos/dist/aos.css'
 
 function App() {
 
   const [todos, setTodos] = useState([])
   const [todo, setTodo] = useState('');
   const [todoStatus, setTodoStatus] = useState(false);
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, [])
 
   const generateUniqueId = () => {
     // Generate a unique ID for each todo item (you can use a library like uuid)
@@ -18,12 +24,6 @@ function App() {
     const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
     setTodos(storedTodos)
   }, [])
-
-  //to store todo in localstorage
-  // useEffect(() => {
-  //   localStorage.setItem('todos', JSON.stringify(todos));
-  // }, [todos]);
-
 
   function HandleChange(e) {
     setTodo(e.target.value);
@@ -73,11 +73,11 @@ function App() {
     <div className="App">
       <div className="container">
       </div>
-      <div className="todowrapper">
-        <div className="titleBox">
-          <span className="title">LoveTodo</span>
+      <div className="todowrapper" >
+        <div className="titleBox" data-aos="fade-down">
+          <span className="title" >LoveTodo</span>
         </div>
-        <div className="inputBox">
+        <div className="inputBox" data-aos="fade-down">
           <input type="text" className='todoinput' value={todo} placeholder='Add a new task' onChange={(e) => (HandleChange(e))} />
           <button className='submitBtn' type='button' onClick={(e) => {
             e.preventDefault()
@@ -86,9 +86,9 @@ function App() {
               send
             </span></button>
         </div>
-        <div className="todoDisplayBox">
+        <div className="todoDisplayBox" data-aos="fade-up">
           {todos.length != 0 &&
-            <>
+            <div >
               <div className="info">
                 <div className="infoWrapper">
                   <span className="infoItem">Created Tasks: </span><div className="createdList">{countAllTodos()}</div>
@@ -98,7 +98,7 @@ function App() {
                 </div>
               </div>
               <hr />
-            </>
+            </div>
           }
 
           {

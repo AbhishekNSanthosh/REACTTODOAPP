@@ -146,7 +146,8 @@
 }
 
 .todoTime {
-  font-size: 12px;
+  font-size: 11.5px;
+  font-weight: 300;
 }
 
 hr {
@@ -162,9 +163,9 @@ hr {
 }
 
 .createdList {
-  padding: 2px 5px;
-  max-width: 25px;
-  min-width: 25px;
+  padding: 2px 3px;
+  max-width: 30px;
+  min-width: 20px;
   display: flex;
   font-size: 13px;
   align-items: center;
