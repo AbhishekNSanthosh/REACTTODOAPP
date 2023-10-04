@@ -3,6 +3,7 @@ import './App.css';
 import nothingImage from './assets/nothing.png'
 import Aos from 'aos';
 import 'aos/dist/aos.css'
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -31,16 +32,41 @@ function App() {
 
   //add a todo
   function addTodo() {
-    const newTodo = {
-      id: generateUniqueId(),
-      title: todo,
-      date: new Date().toLocaleString(),
-      isComplete: todoStatus
+    if (todo === "") {
+      toast('Please enter something!',
+        {
+          icon: '🙁',
+          style: {
+            borderRadius: '10px',
+            background: '#FF0000',
+            color: '#fff',
+            fontWeight:'500'
+          },
+        }
+      );
+    } else {
+      const newTodo = {
+        id: generateUniqueId(),
+        title: todo,
+        date: new Date().toLocaleString(),
+        isComplete: todoStatus
+      }
+      setTodos([...todos, newTodo]);
+      localStorage.setItem('todos', JSON.stringify([...todos, newTodo]));
+      setTodo("")
+      countAllTodos();
+      toast('Todo added successfully!',
+        {
+          icon: '🥳',
+          style: {
+            borderRadius: '10px',
+            background: '#0ec904',
+            color: '#fff',
+            fontWeight:'600'
+          },
+        }
+      );
     }
-    setTodos([...todos, newTodo]);
-    localStorage.setItem('todos', JSON.stringify([...todos, newTodo]));
-    setTodo("")
-    countAllTodos();
   }
 
   //get todo count
@@ -165,6 +191,7 @@ function App() {
       <div className="love">
         <span className="author">Made with <span className="emoji">❤️</span> by  Abhishek</span>
       </div>
+      <Toaster />
     </div>
   );
 }
