@@ -272,8 +272,10 @@ hr {
 @media only screen and (max-width: 767px) {
   .love {
     position: absolute;
-    bottom: 5;
+    bottom: -40px;
     font-size: 10px;
+    font-weight: 300;
+
   }
 }
 
@@ -357,4 +359,10 @@ hr {
 .submitBtn {
   border: none;
   background-color: #fff;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
 }

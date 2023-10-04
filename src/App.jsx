@@ -189,7 +189,7 @@ function App() {
         </div>
       </div>
       <div className="love">
-        <span className="author">Made with <span className="emoji">❤️</span> by  Abhishek</span>
+        <span className="author">Made with <span className="emoji">❤️</span> by  <a className='link' href="https://www.linkedin.com/in/abhishek-santhosh">Abhishek</a></span>
       </div>
       <Toaster />
     </div>
