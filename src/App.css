@@ -72,12 +72,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 9%;
+  height: 80px;
 }
 
 .todoinput {
   width: 90%;
-  padding: 0.5rem;
+  padding: 15px;
   display: inline;
   outline: none;
   border: none;
@@ -96,7 +96,7 @@
   display: flex;
   background-color: #fff;
   flex-direction: column;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .info {
@@ -151,7 +151,7 @@
 hr {
   border: none;
   height: 1px;
-  background-color: #af59ff6b;
+  background-color: #af59ff4b;
 }
 
 .love {
@@ -178,4 +178,28 @@ hr {
   max-height: 20rem;
   overflow-y: auto;
   z-index: 15;
+}
+
+.noDataCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20rem;
+  min-height: 15rem;
+  justify-content: center;
+}
+
+.noData {
+  height: 10rem
+}
+
+.dataMsg {
+  font-size: .9rem;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+}
+
+.submitBtn {
+  border: none;
+  background-color: #fff;
 }

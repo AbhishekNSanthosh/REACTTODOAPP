@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import nothingImage from './assets/nothing.png'
 
 function App() {
 
@@ -28,6 +29,11 @@ function App() {
   //get completed todo count 
   const countCompletedTodos = () => todos.filter((todo) => todo.completed).length;
 
+  const deleteTodo = (index) => {
+    const updatedTodos = todos.filter((_, i) => i !== index);
+    setTodos(updatedTodos);
+  };
+
   return (
     <div className="App">
       <div className="container">
@@ -38,9 +44,12 @@ function App() {
         </div>
         <div className="inputBox">
           <input type="text" className='todoinput' value={todo} placeholder='Add a new task' onChange={(e) => (HandleChange(e))} />
-          <span onClick={addTodo} className="material-symbols-outlined send"  >
+          <button className='submitBtn' type='button' onClick={(e)=>{
+            e.preventDefault()
+            addTodo()
+          }}> <span className="material-symbols-outlined send"  >
             send
-          </span>
+          </span></button>
         </div>
         <div className="todoDisplayBox">
           {todos.length != 0 &&
@@ -57,40 +66,55 @@ function App() {
             </>
           }
 
-          <div className="todoItemCol">
+          {
+            todos.length === 0 ?
 
-            {
-              todos && todos.map((task) => (
+              <div className="noDataCol">
 
-                <div className="todoItem" key={task?.id}>
-                  <div className="todoItemWrapper">
-                    <div className="checkbox">
-                      <span className="material-symbols-outlined check">
-                        check_circle
-                      </span>
+                <img src={nothingImage} alt="hey" className='noData' />
+                <span className="dataMsg">You haven't added any todos!</span>
+              </div>
+
+              :
+
+              <div className="todoItemCol">
+
+                {
+                  todos && todos.map((task) => (
+
+                    <div className="todoItem" key={task?.id}>
+                      <div className="todoItemWrapper">
+                        <div className="checkbox">
+                          <span className="material-symbols-outlined check">
+                            check_circle
+                          </span>
+                        </div>
+                        <div className="todoDetails">
+                          <span className="todoTitle">{task.title}</span>
+                          <span className="todoTime">{task.date}</span>
+                        </div>
+                        <div className="action">
+                          <span className="material-symbols-outlined check" onClick={() => {
+                            deleteTodo(task.id)
+                          }}>
+                            delete
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="todoDetails">
-                      <span className="todoTitle">{task.title}</span>
-                      <span className="todoTime">{task.date}</span>
-                    </div>
-                    <div className="action">
-                      <span className="material-symbols-outlined check">
-                        delete
-                      </span>
-                    </div>
-                  </div>
-                </div>
 
-              ))
-            }
+                  ))
+                }
 
 
 
-          </div>
+              </div>
+
+          }
         </div>
       </div>
       <div className="love">
-        <span className="author">Made with <span className="emoji">❤️</span> Abhishek</span>
+        <span className="author">Made with <span className="emoji">❤️</span> by  Abhishek</span>
       </div>
     </div>
   );
