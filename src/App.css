@@ -38,6 +38,20 @@
   z-index: -1;
 }
 
+@media only screen and (max-width: 767px) {
+  .container {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 40vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./assets/bg.png');
+    z-index: -1;
+  }
+}
+
 .bgimg {
   width: 100%;
   height: 100%;
@@ -55,6 +69,20 @@
   gap: 2rem;
 }
 
+@media only screen and (max-width: 767px) {
+  .todowrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
 .title {
   color: #FFF;
   font-family: Plus Jakarta Sans;
@@ -65,6 +93,18 @@
   text-transform: uppercase;
 }
 
+@media only screen and (max-width: 767px) {
+  .title {
+    color: #FFF;
+    font-family: Plus Jakarta Sans;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+}
+
 .inputBox {
   background-color: #fff;
   border-radius: 10px;
@@ -72,7 +112,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* height: 80px; */
 }
 
 .todoinput {
